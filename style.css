@@ -83,7 +83,7 @@ main {
 }
 
 .question-word {
-    font-size: 3rem;
+    font-size: 9rem;
     font-weight: bold;
     margin-bottom: 5px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -278,7 +278,7 @@ main {
 }
 
 .parts-category {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .parts-category:last-child {
@@ -293,7 +293,7 @@ main {
 
 .parts-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
     gap: 6px;
 }
 
@@ -302,7 +302,7 @@ main {
     background: white;
     border: 2px solid #667eea;
     border-radius: 8px;
-    font-size: 1.5rem;
+    font-size: 4.5rem !important;
     font-weight: bold;
     color: #667eea;
     cursor: pointer;
@@ -315,6 +315,11 @@ main {
     user-select: none;
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color: transparent;
+    line-height: 1;
+    padding: 0 !important;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
 }
 
 .part-button:hover {
@@ -493,11 +498,15 @@ footer {
     }
 
     .question-meaning {
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
 
     .question-reading {
-        font-size: 0.85rem;
+        font-size: 0.65rem;
+    }
+
+    .question-box {
+        padding: 6px;
     }
 
     .preview-char {
@@ -505,12 +514,12 @@ footer {
     }
 
     .parts-grid {
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         gap: 5px;
     }
 
     .part-button {
-        font-size: 1.3rem;
+        font-size: 2rem;
     }
 
     .btn {
@@ -562,8 +571,13 @@ footer {
 
     .question-area h2,
     .work-area h2 {
-        font-size: 0.8rem;
-        margin-bottom: 3px;
+        font-size: 0.7rem;
+        margin-bottom: 2px;
+    }
+
+    .question-area,
+    .work-area {
+        padding: 6px;
     }
 
     .question-word {
@@ -574,11 +588,13 @@ footer {
         font-size: 0.85rem;
     }
 
-    .question-reading {
-        font-size: 0.7rem;
+    .preview-label {
+        font-size: 0.65rem;
     }
 
-    .preview-char {
+    .preview-area {
+        padding: 6px;
+        margin-bottom: 5px;
         font-size: 2.5rem;
     }
 
@@ -587,22 +603,30 @@ footer {
     }
 
     .parts-area h2 {
-        font-size: 0.85rem;
-        margin-bottom: 3px;
-    }
-
-    .parts-category h3 {
         font-size: 0.75rem;
         margin-bottom: 3px;
     }
 
+    .parts-area {
+        padding: 6px;
+    }
+
+    .parts-category h3 {
+        font-size: 0.65rem;
+        margin-bottom: 2px;
+    }
+
+    .parts-category {
+        margin-bottom: 5px;
+    }
+
     .parts-grid {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 4px;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 3px;
     }
 
     .part-button {
-        font-size: 1.1rem;
+        font-size: 0.9rem;
     }
 
     .btn {
