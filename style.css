@@ -25,7 +25,6 @@ body {
     flex-direction: column;
 }
 
-/* ヘッダー */
 header {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -43,15 +42,6 @@ header p {
     margin-top: 2px !important;
 }
 
-.score-board {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    font-size: 1.1rem;
-    font-weight: bold;
-}
-
-/* メインエリア */
 main {
     padding: 10px;
     flex: 1;
@@ -66,7 +56,6 @@ main {
     height: 100%;
 }
 
-/* お題エリア */
 .question-area {
     background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     border-radius: 10px;
@@ -189,6 +178,31 @@ main {
     font-weight: bold;
     color: #667eea;
     text-shadow: 2px 2px 4px rgba(102, 126, 234, 0.2);
+}
+
+.result-feedback {
+    font-size: 2.5rem;
+    margin-top: 10px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.result-feedback.show {
+    opacity: 1;
+}
+
+.result-feedback.correct {
+    color: #2ecc71;
+    font-weight: bold;
+}
+
+.result-feedback.incorrect {
+    color: #3498db;
+    font-weight: bold;
 }
 
 .action-buttons {
