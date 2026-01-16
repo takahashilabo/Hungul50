@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ハングル五十音</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 日本語の五十音に対応したハングル文字</h1>
+            <p style="font-size: 0.6rem; margin-top: 5px; opacity: 0.9;">ハングル文字は１万以上あるらしいですが、このページで出題されるのは５０文字です。ハングル文字全体の約０.４５%に過ぎませんが最初の一歩としてご活用いただければ幸いです。</p>
+        </header>
+
+        <main>
+            <div class="game-area">
+                <!-- お題表示エリア -->
+                <div class="question-area">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h2>お題</h2>
+                        <button class="btn btn-small" id="toggleAnswerBtn">正解を隠す</button>
+                    </div>
+                    <div class="question-box">
+                        <div class="question-word" id="questionWord">?</div>
+                        <div class="question-meaning" id="questionMeaning">準備中...</div>
+                        <div class="question-reading" id="questionReading"></div>
+                    </div>
+                </div>
+
+                <!-- 作業エリア -->
+                <div class="work-area">
+                    <h2>ハングル組み立て</h2>
+                    <div class="hangul-builder" style="display: none;">
+                        <div class="builder-slot" data-type="initial">
+                            <div class="slot-label">子音</div>
+                            <div class="slot-content" id="initialSlot">?</div>
+                        </div>
+                        <div class="builder-slot" data-type="medial">
+                            <div class="slot-label">母音</div>
+                            <div class="slot-content" id="medialSlot">?</div>
+                        </div>
+                        <div class="builder-slot" data-type="final" style="display: none;">
+                            <div class="slot-label">終声（パッチム）</div>
+                            <div class="slot-content" id="finalSlot">-</div>
+                        </div>
+                    </div>
+                    <div class="preview-area">
+                        <div class="preview-label">完成形:</div>
+                        <div class="preview-char" id="previewChar">?</div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-check" id="checkBtn">答え合わせ</button>
+                        <button class="btn btn-reset" id="resetBtn">リセット</button>
+                    </div>
+                </div>
+
+                <!-- パーツ選択エリア -->
+                <div class="parts-area">
+                    <h2>ハングルパーツを選択</h2>
+                    <div class="parts-category">
+                        <h3>子音（9種類）</h3>
+                        <div class="parts-grid" id="initialParts"></div>
+                    </div>
+                    <div class="parts-category">
+                        <h3>母音（7種類）</h3>
+                        <div class="parts-grid" id="medialParts"></div>
+                    </div>
+                    <div class="parts-category" style="display: none;">
+                        <h3>終声（パッチム）- オプション</h3>
+                        <div class="parts-grid" id="finalParts"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 結果モーダル -->
+            <div class="modal" id="resultModal">
+                <div class="modal-content">
+                    <div class="result-icon" id="resultIcon">✓</div>
+                    <h2 id="resultTitle">正解！</h2>
+                    <p id="resultMessage">素晴らしい！</p>
+                    <button class="btn btn-primary" id="nextBtn">次の問題</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="help-text">
+                <p>💡 ヒント: 子音と母音を選んで、表示されたハングル文字を読めるようになろう！（五十音対応版）</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
