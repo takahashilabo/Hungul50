@@ -125,9 +125,6 @@ const elements = {
     medialSlot: document.getElementById('medialSlot'),
     finalSlot: document.getElementById('finalSlot'),
     previewChar: document.getElementById('previewChar'),
-    checkBtn: document.getElementById('checkBtn'),
-    resetBtn: document.getElementById('resetBtn'),
-    nextBtn: document.getElementById('nextBtn'),
     resultModal: document.getElementById('resultModal'),
     resultIcon: document.getElementById('resultIcon'),
     resultTitle: document.getElementById('resultTitle'),
@@ -217,6 +214,12 @@ function selectPart(part, type, button) {
 
     // プレビュー更新
     updatePreview();
+    
+    // 初声と中声が両方選択されたら自動的に答え合わせ
+    const { initial, medial } = gameState.selectedParts;
+    if (initial && medial) {
+        setTimeout(() => checkAnswer(), 100);
+    }
 }
 
 // スロット更新（表示欄は非表示のため処理削除）
@@ -323,7 +326,6 @@ function checkAnswer() {
     const { initial, medial, final } = gameState.selectedParts;
     
     if (!initial || !medial) {
-        alert('初声と中声を選択してください！');
         return;
     }
 
@@ -379,19 +381,12 @@ function hideResult() {
 
 // イベントリスナーの登録
 function attachEventListeners() {
-    elements.checkBtn.addEventListener('click', checkAnswer);
-    elements.resetBtn.addEventListener('click', resetBuilder);
     elements.toggleAnswerBtn.addEventListener('click', toggleAnswerVisibility);
-    elements.nextBtn.addEventListener('click', () => {
-        hideResult();
-        loadNewQuestion();
-    });
     
     // モーダルの背景クリックで閉じる
     elements.resultModal.addEventListener('click', (e) => {
         if (e.target === elements.resultModal) {
             hideResult();
-            loadNewQuestion();
         }
     });
 }
