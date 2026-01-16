@@ -364,6 +364,12 @@ function showResult(isCorrect) {
         elements.resultTitle.textContent = '残念...';
         elements.resultMessage.textContent = `正解は「${gameState.currentQuestion.char}」でした。もう一度チャレンジ！`;
     }
+    
+    // 2秒後に自動的に次の問題に進む
+    setTimeout(() => {
+        hideResult();
+        loadNewQuestion();
+    }, 2000);
 }
 
 // 結果モーダルを閉じる
