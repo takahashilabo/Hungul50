@@ -172,7 +172,8 @@ let gameState = {
     answeredCorrectly: [],  // 正解済みの問題インデックス
     incorrectQuestions: [], // 不正解だった問題（{index, questionCount}形式）
     questionCount: 0,       // 出題された総問題数
-    progress: {}            // 文字ごとの出題/正解カウント（localStorage）
+    progress: {},            // 文字ごとの出題/正解カウント（localStorage）
+    isProcessing: false     // 処理中フラグ（連続クリック防止）
 };
 
 // DOM要素
@@ -261,6 +262,11 @@ function createPartButton(part, type) {
 
 // パーツ選択
 function selectPart(part, type, button) {
+    // 連続クリック防止
+    if (gameState.isProcessing) {
+        return;
+    }
+
     // 前の選択を解除
     const previousSelected = document.querySelector(
         `.part-button[data-type="${type}"].selected`
@@ -279,7 +285,11 @@ function selectPart(part, type, button) {
     // 初声と中声が両方選択されたら自動的に答え合わせ
     const { initial, medial } = gameState.selectedParts;
     if (initial && medial) {
-        setTimeout(() => checkAnswer(), 100);
+        gameState.isProcessing = true;
+        setTimeout(() => {
+            checkAnswer();
+            gameState.isProcessing = false;
+        }, 100);
     }
 }
 
@@ -353,6 +363,27 @@ function decomposeHangul(char) {
 
 // 新しい問題を読み込む
 function loadNewQuestion() {
+    // リセット（タイミングをずらす）
+    gameState.selectedParts = {
+        initial: null,
+        medial: null,
+        final: null
+    };
+
+    elements.previewChar.textContent = '?';
+
+    // 選択状態をクリア - ポインタイベントを一時的に無効化して確実にクリア
+    const medialButtons = document.querySelectorAll('.part-button[data-type="medial"].selected');
+    const initialButtons = document.querySelectorAll('.part-button[data-type="initial"].selected');
+    
+    medialButtons.forEach(btn => {
+        btn.classList.remove('selected');
+    });
+    
+    initialButtons.forEach(btn => {
+        btn.classList.remove('selected');
+    });
+
     // フィルタリング: 正解済みと不正解(未再出題)を除外した問題を取得
     const availableQuestions = QUESTIONS.filter((q, index) => {
         // 正解済みの問題は除外
@@ -401,25 +432,6 @@ function loadNewQuestion() {
     updateAnswerDisplay();
     elements.questionMeaning.textContent = gameState.currentQuestion.meaning;
     elements.questionReading.textContent = `読み: ${gameState.currentQuestion.reading}`;
-
-    // リセット
-    resetBuilder();
-}
-
-// ビルダーをリセット
-function resetBuilder() {
-    gameState.selectedParts = {
-        initial: null,
-        medial: null,
-        final: null
-    };
-
-    elements.previewChar.textContent = '?';
-
-    // 選択状態をクリア
-    document.querySelectorAll('.part-button.selected').forEach(btn => {
-        btn.classList.remove('selected');
-    });
 }
 
 // 答え合わせ
@@ -491,11 +503,11 @@ function showResult(isCorrect) {
         elements.resultFeedback.className = 'result-feedback incorrect show';
     }
     
-    // 1.5秒後に自動的に次の問題に進む
+    // 2秒後に自動的に次の問題に進む（タッチイベント完了のマージンを確保）
     setTimeout(() => {
         elements.resultFeedback.classList.remove('show');
         loadNewQuestion();
-    }, 1500);
+    }, 2000);
 }
 
 // 結果モーダルを閉じる
