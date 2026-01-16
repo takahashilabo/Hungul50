@@ -333,6 +333,14 @@ main {
     transform: scale(0.95);
 }
 
+.part-button:focus {
+    outline: none;
+}
+
+.part-button:focus-visible {
+    outline: none;
+}
+
 .part-button.selected {
     background: #667eea;
     color: white;

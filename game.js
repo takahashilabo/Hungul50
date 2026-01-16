@@ -257,6 +257,11 @@ function createPartButton(part, type) {
     
     button.addEventListener('click', () => selectPart(part, type, button));
     
+    // Androidでのタッチ後の:focus状態を解除するため
+    button.addEventListener('touchend', (e) => {
+        button.blur();
+    });
+    
     return button;
 }
 
@@ -264,6 +269,14 @@ function createPartButton(part, type) {
 function selectPart(part, type, button) {
     // 連続クリック防止
     if (gameState.isProcessing) {
+        return;
+    }
+
+    // 既に選択されている場合は未選択に戻す（トグル機能）
+    if (button.classList.contains('selected')) {
+        button.classList.remove('selected');
+        gameState.selectedParts[type] = null;
+        updatePreview();
         return;
     }
 
@@ -363,7 +376,12 @@ function decomposeHangul(char) {
 
 // 新しい問題を読み込む
 function loadNewQuestion() {
-    // リセット（タイミングをずらす）
+    // すべての選択状態をクリア（念念のため全ボタンを処理）
+    document.querySelectorAll('.part-button.selected').forEach(btn => {
+        btn.classList.remove('selected');
+    });
+
+    // リセット
     gameState.selectedParts = {
         initial: null,
         medial: null,
@@ -371,18 +389,6 @@ function loadNewQuestion() {
     };
 
     elements.previewChar.textContent = '?';
-
-    // 選択状態をクリア - ポインタイベントを一時的に無効化して確実にクリア
-    const medialButtons = document.querySelectorAll('.part-button[data-type="medial"].selected');
-    const initialButtons = document.querySelectorAll('.part-button[data-type="initial"].selected');
-    
-    medialButtons.forEach(btn => {
-        btn.classList.remove('selected');
-    });
-    
-    initialButtons.forEach(btn => {
-        btn.classList.remove('selected');
-    });
 
     // フィルタリング: 正解済みと不正解(未再出題)を除外した問題を取得
     const availableQuestions = QUESTIONS.filter((q, index) => {
