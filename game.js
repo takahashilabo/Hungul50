@@ -91,7 +91,7 @@ const QUESTIONS = [
     // や行
     { char: '야', meaning: 'ヤ', reading: 'ヤ', godan: '야행' },
     { char: '유', meaning: 'ユ', reading: 'ユ', godan: '야행' },
-    { char: '요', meaning: 'ヨ', reading: 'ヨ', godan: '야행' },
+    { char: '여', meaning: 'ヨ', reading: 'ヨ', godan: '야행' },
     
     // ら行
     { char: '라', meaning: 'ラ', reading: 'ラ', godan: '라행' },
