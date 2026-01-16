@@ -35,6 +35,7 @@ const HANGUL_PARTS = {
         { char: 'ㅕ', code: 0x1167, name: 'ヨ行', sound: 'yeo' },
         { char: 'ㅗ', code: 0x1169, name: 'オ段', sound: 'o' },
         { char: 'ㅜ', code: 0x116E, name: 'ウ段', sound: 'u' },
+        { char: 'ㅠ', code: 0x1172, name: 'ユ行', sound: 'yu' },
         { char: 'ㅣ', code: 0x1175, name: 'イ段', sound: 'i' }
     ],
     // 終声（パッチム）- パッチムは使用しない
