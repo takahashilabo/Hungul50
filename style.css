@@ -446,9 +446,24 @@ footer {
     }
 
     .game-area {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto 1fr;
-        gap: 8px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto 1fr;
+        gap: 6px;
+    }
+
+    .question-area {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .work-area {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .parts-area {
+        grid-column: 1 / -1;
+        grid-row: 2;
     }
 
     header h1 {
@@ -508,27 +523,59 @@ footer {
     }
 
     header {
-        padding: 8px;
+        padding: 6px;
     }
 
     header h1 {
-        font-size: 1rem;
+        font-size: 0.85rem;
+    }
+
+    header p {
+        font-size: 0.5rem !important;
     }
 
     main {
-        padding: 8px;
+        padding: 6px;
     }
 
     .game-area {
-        gap: 6px;
+        gap: 5px;
+    }
+
+    .question-area h2,
+    .work-area h2 {
+        font-size: 0.8rem;
+        margin-bottom: 3px;
     }
 
     .question-word {
         font-size: 2rem;
     }
 
+    .question-meaning {
+        font-size: 0.85rem;
+    }
+
+    .question-reading {
+        font-size: 0.7rem;
+    }
+
     .preview-char {
         font-size: 2.5rem;
+    }
+
+    .preview-label {
+        font-size: 0.75rem;
+    }
+
+    .parts-area h2 {
+        font-size: 0.85rem;
+        margin-bottom: 3px;
+    }
+
+    .parts-category h3 {
+        font-size: 0.75rem;
+        margin-bottom: 3px;
     }
 
     .parts-grid {
@@ -538,5 +585,23 @@ footer {
 
     .part-button {
         font-size: 1.1rem;
+    }
+
+    .btn {
+        font-size: 0.75rem;
+        padding: 6px 8px;
+    }
+
+    .btn-small {
+        padding: 3px 6px;
+        font-size: 0.65rem;
+    }
+
+    footer {
+        padding: 5px;
+    }
+
+    .help-text {
+        font-size: 0.65rem;
     }
 }
