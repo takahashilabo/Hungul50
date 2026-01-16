@@ -9,29 +9,38 @@ body {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: #333;
     min-height: 100vh;
-    padding: 10px;
+    padding: 5px;
+    overflow: hidden;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     background: white;
-    border-radius: 20px;
+    border-radius: 15px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     overflow: hidden;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* ヘッダー */
 header {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    padding: 20px;
+    padding: 10px 15px;
     text-align: center;
 }
 
 header h1 {
-    font-size: 2rem;
-    margin-bottom: 10px;
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+}
+
+header p {
+    font-size: 0.6rem !important;
+    margin-top: 2px !important;
 }
 
 .score-board {
@@ -44,63 +53,75 @@ header h1 {
 
 /* メインエリア */
 main {
-    padding: 20px;
+    padding: 10px;
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
 }
 
 .game-area {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
+    grid-template-columns: 1fr 1fr 2fr;
+    gap: 10px;
+    height: 100%;
 }
 
 /* お題エリア */
 .question-area {
     background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    border-radius: 15px;
-    padding: 20px;
+    border-radius: 10px;
+    padding: 10px;
     text-align: center;
     color: white;
+    display: flex;
+    flex-direction: column;
 }
 
 .question-area h2 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
+    font-size: 1rem;
+    margin-bottom: 5px;
 }
 
 .question-box {
     background: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    padding: 20px;
+    border-radius: 8px;
+    padding: 10px;
     backdrop-filter: blur(10px);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .question-word {
-    font-size: 5rem;
+    font-size: 3rem;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .question-meaning {
-    font-size: 1.5rem;
-    margin-bottom: 5px;
+    font-size: 1.2rem;
+    margin-bottom: 3px;
 }
 
 .question-reading {
-    font-size: 1.2rem;
+    font-size: 1rem;
     opacity: 0.9;
 }
 
 /* 作業エリア */
 .work-area {
     background: #f8f9fa;
-    border-radius: 15px;
-    padding: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .work-area h2 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
+    font-size: 1rem;
+    margin-bottom: 5px;
     color: #667eea;
 }
 
@@ -146,21 +167,25 @@ main {
 
 .preview-area {
     background: white;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
     text-align: center;
     border: 2px solid #667eea;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .preview-label {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #666;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .preview-char {
-    font-size: 6rem;
+    font-size: 4rem;
     font-weight: bold;
     color: #667eea;
     text-shadow: 2px 2px 4px rgba(102, 126, 234, 0.2);
@@ -168,21 +193,21 @@ main {
 
 .action-buttons {
     display: flex;
-    gap: 10px;
+    gap: 5px;
     flex-wrap: wrap;
 }
 
 .btn {
     flex: 1;
-    min-width: 120px;
-    padding: 15px 30px;
-    font-size: 1.1rem;
+    min-width: 80px;
+    padding: 10px 15px;
+    font-size: 0.9rem;
     font-weight: bold;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .btn:active {
@@ -193,8 +218,8 @@ main {
 .btn-small {
     flex: none;
     min-width: auto;
-    padding: 8px 16px;
-    font-size: 0.9rem;
+    padding: 5px 10px;
+    font-size: 0.75rem;
 }
 
 .btn-check {
@@ -225,39 +250,45 @@ main {
 /* パーツエリア */
 .parts-area {
     background: #fff;
-    border-radius: 15px;
-    padding: 20px;
+    border-radius: 10px;
+    padding: 10px;
     border: 2px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
 }
 
 .parts-area h2 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
+    font-size: 1rem;
+    margin-bottom: 5px;
     color: #667eea;
 }
 
 .parts-category {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+}
+
+.parts-category:last-child {
+    margin-bottom: 0;
 }
 
 .parts-category h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
     color: #764ba2;
 }
 
 .parts-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+    gap: 6px;
 }
 
 .part-button {
     aspect-ratio: 1;
     background: white;
     border: 2px solid #667eea;
-    border-radius: 10px;
-    font-size: 2rem;
+    border-radius: 8px;
+    font-size: 1.5rem;
     font-weight: bold;
     color: #667eea;
     cursor: pointer;
@@ -265,7 +296,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .part-button:hover {
@@ -354,14 +385,18 @@ main {
 /* フッター */
 footer {
     background: #f8f9fa;
-    padding: 20px;
+    padding: 8px;
     text-align: center;
-    border-top: 2px solid #e0e0e0;
+    border-top: 1px solid #e0e0e0;
 }
 
 .help-text {
     color: #666;
-    font-size: 1rem;
+    font-size: 0.75rem;
+}
+
+.help-text p {
+    margin: 0;
 }
 
 /* アニメーション */
@@ -406,52 +441,48 @@ footer {
 
 /* レスポンシブデザイン */
 @media (max-width: 768px) {
-    header h1 {
-        font-size: 1.5rem;
+    body {
+        padding: 3px;
     }
 
-    .score-board {
-        font-size: 1rem;
-        gap: 15px;
-    }
-
-    .question-word {
-        font-size: 4rem;
-    }
-
-    .question-meaning {
-        font-size: 1.2rem;
-    }
-
-    .hangul-builder {
-        flex-direction: column;
-    }
-
-    .builder-slot {
-        min-width: auto;
-    }
-
-    .slot-content {
-        font-size: 2.5rem;
-        min-height: 50px;
-    }
-
-    .preview-char {
-        font-size: 5rem;
-    }
-
-    .parts-grid {
-        grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    .game-area {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr;
         gap: 8px;
     }
 
+    header h1 {
+        font-size: 1.1rem;
+    }
+
+    .question-word {
+        font-size: 2.5rem;
+    }
+
+    .question-meaning {
+        font-size: 1rem;
+    }
+
+    .question-reading {
+        font-size: 0.85rem;
+    }
+
+    .preview-char {
+        font-size: 3rem;
+    }
+
+    .parts-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 5px;
+    }
+
     .part-button {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 
     .btn {
-        font-size: 1rem;
-        padding: 12px 20px;
+        font-size: 0.85rem;
+        padding: 8px 12px;
     }
 
     .modal-content {
@@ -469,30 +500,43 @@ footer {
 
 @media (max-width: 480px) {
     body {
-        padding: 5px;
+        padding: 2px;
     }
 
     .container {
-        border-radius: 10px;
+        border-radius: 8px;
     }
 
     header {
-        padding: 15px;
+        padding: 8px;
+    }
+
+    header h1 {
+        font-size: 1rem;
     }
 
     main {
-        padding: 15px;
+        padding: 8px;
+    }
+
+    .game-area {
+        gap: 6px;
     }
 
     .question-word {
-        font-size: 3rem;
+        font-size: 2rem;
     }
 
     .preview-char {
-        font-size: 4rem;
+        font-size: 2.5rem;
     }
 
     .parts-grid {
         grid-template-columns: repeat(5, 1fr);
+        gap: 4px;
+    }
+
+    .part-button {
+        font-size: 1.1rem;
     }
 }
