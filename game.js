@@ -179,7 +179,6 @@ let gameState = {
 // DOM要素
 const elements = {
     questionWord: document.getElementById('questionWord'),
-    questionMeaning: document.getElementById('questionMeaning'),
     questionReading: document.getElementById('questionReading'),
     initialSlot: document.getElementById('initialSlot'),
     medialSlot: document.getElementById('medialSlot'),
@@ -376,9 +375,12 @@ function decomposeHangul(char) {
 
 // 新しい問題を読み込む
 function loadNewQuestion() {
-    // すべての選択状態をクリア（念念のため全ボタンを処理）
+    // すべての選択状態をクリア（念のため全ボタンを処理）
     document.querySelectorAll('.part-button.selected').forEach(btn => {
+        //console.log(btn.classList)
         btn.classList.remove('selected');
+        //btn.blur();
+        //console.log(btn.classList)
     });
 
     // リセット
@@ -436,7 +438,7 @@ function loadNewQuestion() {
 
     // 問題表示（showAnswerに応じて表示/非表示を切り替え）
     updateAnswerDisplay();
-    elements.questionMeaning.textContent = gameState.currentQuestion.meaning;
+//    elements.questionMeaning.textContent = gameState.currentQuestion.meaning;
     elements.questionReading.textContent = `読み: ${gameState.currentQuestion.reading}`;
 }
 
@@ -509,11 +511,11 @@ function showResult(isCorrect) {
         elements.resultFeedback.className = 'result-feedback incorrect show';
     }
     
-    // 2秒後に自動的に次の問題に進む（タッチイベント完了のマージンを確保）
+    // 1.5秒後に自動的に次の問題に進む（タッチイベント完了のマージンを確保）
     setTimeout(() => {
         elements.resultFeedback.classList.remove('show');
         loadNewQuestion();
-    }, 2000);
+    }, 1500);
 }
 
 // 結果モーダルを閉じる

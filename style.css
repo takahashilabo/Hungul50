@@ -83,19 +83,14 @@ main {
 }
 
 .question-word {
-    font-size: 9rem;
+    font-size: 7rem;
     font-weight: bold;
     margin-bottom: 5px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.question-meaning {
-    font-size: 1.2rem;
-    margin-bottom: 3px;
-}
-
 .question-reading {
-    font-size: 1rem;
+    font-size: 2rem;
     opacity: 0.9;
 }
 
@@ -215,7 +210,7 @@ main {
     flex: 1;
     min-width: 80px;
     padding: 10px 15px;
-    font-size: 0.9rem;
+    font-size: 0.5rem;
     font-weight: bold;
     border: none;
     border-radius: 8px;
@@ -233,7 +228,7 @@ main {
     flex: none;
     min-width: auto;
     padding: 5px 10px;
-    font-size: 0.75rem;
+    font-size: 0.5rem;
 }
 
 .btn-check {
@@ -241,9 +236,11 @@ main {
     color: white;
 }
 
-.btn-check:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
+@media (hover: hover) {
+    .btn-check:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
+    }
 }
 
 .btn-reset {
@@ -251,8 +248,10 @@ main {
     color: #666;
 }
 
-.btn-reset:hover {
-    background: #d0d0d0;
+@media (hover: hover) {
+    .btn-reset:hover {
+        background: #d0d0d0;
+    }
 }
 
 .btn-primary {
@@ -302,7 +301,7 @@ main {
     background: white;
     border: 2px solid #667eea;
     border-radius: 8px;
-    font-size: 4.5rem !important;
+    font-size: 3rem !important;
     font-weight: bold;
     color: #667eea;
     cursor: pointer;
@@ -322,13 +321,14 @@ main {
     width: 100%;
 }
 
-.part-button:hover {
-    background: #667eea;
-    color: white;
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+@media (hover: hover) {
+    .part-button:hover {
+        background: #667eea;
+        color: white;
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+    }
 }
-
 .part-button:active {
     transform: scale(0.95);
 }
@@ -353,10 +353,12 @@ main {
     cursor: not-allowed;
 }
 
-.part-button.disabled:hover {
-    background: white;
-    color: #667eea;
-    transform: none;
+@media (hover: hover) {
+    .part-button.disabled:hover {
+        background: white;
+        color: #667eea;
+        transform: none;
+    }
 }
 
 /* モーダル */
@@ -501,16 +503,8 @@ footer {
         font-size: 1.1rem;
     }
 
-    .question-word {
-        font-size: 2.5rem;
-    }
-
-    .question-meaning {
-        font-size: 0.8rem;
-    }
-
     .question-reading {
-        font-size: 0.65rem;
+        font-size: 2rem;
     }
 
     .question-box {
@@ -531,7 +525,7 @@ footer {
     }
 
     .btn {
-        font-size: 0.85rem;
+        font-size: 0.5rem;
         padding: 8px 12px;
     }
 
@@ -586,14 +580,6 @@ footer {
     .question-area,
     .work-area {
         padding: 6px;
-    }
-
-    .question-word {
-        font-size: 2rem;
-    }
-
-    .question-meaning {
-        font-size: 0.85rem;
     }
 
     .preview-label {
